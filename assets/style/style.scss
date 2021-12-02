@@ -1,3 +1,46 @@
+$gray: #dadada;
+$white: white;
+$black: black;
+$accent: rgb(80, 100, 200);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: sans-serif;
+}
+
+header {
+    border-bottom: 2px solid $gray;
+    padding: 1rem;
+    justify-content: space-between;
+    display: flex;
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    a, a:visited {
+        text-decoration: none;
+        color: $black;
+    }
+}
+
+main {
+    margin: 2rem auto;
+    width: clamp(600px, 70ch, 95vw);
+}
+
+input {
+    padding: 0.5rem;
+}
+
+input[type="submit"] {
+    background: $accent;
+    border: none;
+    color: $white;
 }
