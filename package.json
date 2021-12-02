@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "watch": "npx parcel watch"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,22 @@
     "url": "https://github.com/team-fabrice/nuit-info/issues"
   },
   "homepage": "https://github.com/team-fabrice/nuit-info#readme",
+  "targets": {
+    "default": {
+      "source": "assets/style/style.scss",
+      "distDir": "public"
+    }
+  },
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
     "koa-views": "^8.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.1"
   }
 }
