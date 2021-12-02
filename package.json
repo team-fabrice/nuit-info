@@ -1,0 +1,26 @@
+{
+  "name": "nuit-info",
+  "version": "1.0.0",
+  "description": "Nuit de l'info 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-fabrice/nuit-info.git"
+  },
+  "author": "Team Fabrice",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/team-fabrice/nuit-info/issues"
+  },
+  "homepage": "https://github.com/team-fabrice/nuit-info#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
+    "koa-views": "^8.0.0"
+  }
+}
