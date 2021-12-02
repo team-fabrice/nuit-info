@@ -1,0 +1,19 @@
+<%- include('head.ejs', { title: 'Résultats de recherche' }) %>
+<h1>Résultats de recherche <%= filtres %></h1>
+<div class="flex_container">
+    <div class="sorties">x sorties</div>
+    <div class="sauves">x personnes et équipages sauvés</div>
+    <div class="morts">x morts</div>
+</div>
+
+<div class="resultats">
+    <ul>
+        <% resultats.forEach((resultat) => { %>
+            <li><%- resultat.title %></li>
+            <li><img src="<%- resultat.img %>" alt="Image de l'article"></img></li>
+            <li><%- resultat.description %></li>
+        <% }); %>
+    </ul>
+</div>
+<%- include('footer.ejs') %>
+
