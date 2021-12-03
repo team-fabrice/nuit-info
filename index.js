@@ -30,7 +30,7 @@ router
         let meta_class = ctx.query.meta_class;
         let created_at = new Date();
         let updated_at = new Date();
-        const [new_article] = await sql` insert into article_rev (revision_id, article_id, title, contents, created_at, updated_at, meta_class) values (uuid_generate_v4 (), uuid_generate_v4 (), ${title}, ${contents}, ${created_at}, ${updated_at}, ${meta_class})`;
+        const [new_article] = await sql` insert into article_rev (revision_id, article_id, title, contents, created_at, updated_at, meta_class, meta_event_date) values (uuid_generate_v4 (), uuid_generate_v4 (), ${title}, ${contents}, ${created_at}, ${updated_at}, ${meta_class}, ${new Date()})`;
         //new_article = {article_id:article_id, title:ctx.query.title, contents:ctx.query.content, created_at:created_at, updated_at:updated_at};
         ctx.body = `Ajout effectué (title:${title}; contents:${contents}; class:${meta_class})`;
     })
@@ -53,6 +53,18 @@ router
         ctx.body = '';
         for(let i = 0; i < names.length; i++){
             ctx.body += `${names[i].meta_person_first_name} ${names[i].meta_person_last_name}, `;
+        }
+        ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
+    })
+    .get('/SortieMer', async function(ctx, next){
+        'use strict';
+        const sorties = await sql`select title, meta_event_date from article_rev where meta_event_date is not null `;
+        let century = ctx.query.event_date || -1;
+        ctx.body = "";
+        for(let i = 0; i < sorties.length; i++){
+            if(sorties[i].meta_event_date.getFullYear().toString().substring(0, 2) == century){
+                ctx.body += `${sorties[i].meta_event_date.getFullYear().toString()} - ${sorties[i].title}, `; 
+            }   
         }
         ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
     })
