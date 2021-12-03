@@ -62,7 +62,7 @@ router
 
 
 
-router.get('/resultatsderecherche', async (ctx) => {
+router.get('/recherche', async (ctx) => {
     await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: [article] })
 })
 
