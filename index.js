@@ -72,6 +72,13 @@ router
         }
         ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
     })
+    .get('/search', async function(ctx, next){
+        'use strict';
+        let s1 = ctx.query.s1;
+        let s2 = ctx.query.s2;
+        const res = JSON.stringify({s1,s2});
+        console.log(res);
+    })
 
 
 
