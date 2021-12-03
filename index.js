@@ -51,6 +51,14 @@ router.get('/nossauveteurs', async (ctx) => {
     await ctx.render('nossauveteurs.ejs', { message: 'test !' })
 })
 
+router.get('/lesacteurs', async (ctx) => {
+    await ctx.render('lesacteurs.ejs', { message: 'test !' })
+})
+
+router.get('/pilotage', async (ctx) => {
+    await ctx.render('pilotage.ejs', { message: 'test !' })
+})
+
 app
     .use(router.routes())
     .use(router.allowedMethods)
