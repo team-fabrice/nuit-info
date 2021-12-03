@@ -11,10 +11,26 @@ $accent: rgb(80, 100, 200);
     padding: 0;
 }
 
+:root {
+    --background-color: #fff;
+    --text-color: #000;
+  }
+  
+
 body {
     font-family: "Playfair Display", serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
+
+      
 }
+
+.dark_mode{
+    --background-color: #3F3F3F;
+    --text-color: #fff;
+    transition : 0.3s ease-in;
+  }
 
 main {
     margin: 7rem auto;
@@ -54,6 +70,7 @@ form {
 
 input, .button {
     padding: 0.5rem;
+
 }
 
 input[type="search"] {
@@ -127,7 +144,7 @@ aside {
             padding: 1rem;
             display: block;
             width: 100%;
-            color: $black;
+            color: var(--text-color);
             text-decoration: none;
         }
     }
@@ -172,18 +189,26 @@ article {
     aside {
         border-right: none;
         padding: 0;
+        margin:0;
+        min-height: 0;
         a,
         a:visited {
             font-size: 0.8em;
         }
     }
 
-    h1 {
+    h1 { 
         font-size: 1.2em;
     }
 
     main {
-        padding: 1em;
+        margin: 0;
+        padding: 1rem;
         width: 100%;
+    }
+
+    .hero {
+        width:95%;
+        min-height: 20vh;
     }
 }
