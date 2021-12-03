@@ -4,6 +4,7 @@ const views = require('koa-views')
 const staticFiles = require('koa-static')
 const postgres = require('postgres')
 const parseMd = require('./src/markdown')
+const { execSync } = require('child_process')
 
 const urlDb = require('./configdb').urlDb;
 const sql = postgres(urlDb, {});
@@ -61,7 +62,9 @@ router
 
 
 router.get('/recherche', async (ctx) => {
-    await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: [article] })
+    const query = ctx.query.q
+    const out = JSON.parse(execSync('python3 main.py', { input: JSON.stringify({ title: query }) })
+    await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: out })
 })
 
 router.get('/apropos', async (ctx) => {
