@@ -52,7 +52,7 @@ form {
     }
 }
 
-input {
+input, .button {
     padding: 0.5rem;
 }
 
@@ -60,10 +60,12 @@ input[type="search"] {
     flex: 1;
 }
 
-input[type="submit"] {
+.button, input[type="submit"] {
     background: $accent;
     border: none;
     color: $white;
+    text-decoration: none;
+    display: inline-block;
 }
 
 
@@ -142,4 +144,21 @@ h1, h2, h3, h4 {
     background-image: url('../img/sns.png'); 
     background-size: cover;
     border-radius: 15px;
+}
+
+pre {
+    overflow-x: auto;
+    padding: 1rem;
+    font-size: 12pt;
+}
+
+article {
+    line-height: 1.3em;
+    img {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+    * {
+        margin: 1rem auto;
+    }
 }

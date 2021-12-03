@@ -62,12 +62,6 @@ router
 
 
 
-let article = {
-    title : 'Ceci est un titre',
-    img : '/img/test.png',
-    description : 'Ceci est la description de l\'article'
-}
-
 router.get('/resultatsderecherche', async (ctx) => {
     await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: [article] })
 })
@@ -75,7 +69,6 @@ router.get('/resultatsderecherche', async (ctx) => {
 router.get('/apropos', async (ctx) => {
     await ctx.render('apropos.ejs', { message: 'test !' })
 })
-
 
 router.get('/article/new', async (ctx) => {
     await ctx.render('editor.ejs', {
@@ -95,6 +88,12 @@ router.get('/article/:uuid/edit', async (ctx) => {
     const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
     art.isNew = false
     await ctx.render('editor.ejs', art)
+})
+
+router.get('/rev/:uuid', async (ctx) => {
+    const [art] = await sql`SELECT * FROM article_rev WHERE revision_id = ${ctx.params.uuid}`
+    art.contents = await parseMd(sql, art.contents + '\n\n```\n' + JSON.stringify(art, null, 2) + '\n```\n')
+    await ctx.render('article.ejs', art)
 })
 
 app
