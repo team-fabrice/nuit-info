@@ -76,15 +76,10 @@ router.get('/apropos', async (ctx) => {
     await ctx.render('apropos.ejs', { message: 'test !' })
 })
 
-<<<<<<< HEAD
-router.get('/editor', async (ctx) => {
-    await ctx.render('editor.ejs', { message: 'test !' })
-=======
 router.get('/article/:uuid', async (ctx) => {
     const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
     art.contents = await parseMd(sql, art.contents)
     await ctx.render('article.ejs', art)
->>>>>>> e5fff3ae64bfdb0faa06214846ad279293aa8e94
 })
 
 app
