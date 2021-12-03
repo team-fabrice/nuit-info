@@ -84,6 +84,7 @@ aside {
     font-family: 'Montserrat', sans-serif;
     border-right: 2px solid $gray;
     padding: 1rem 0;
+    min-height: 100vh;
 
     ul {
         list-style: none;
@@ -106,4 +107,11 @@ aside {
 h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
+}
+
+.hero {
+    min-height: 40vh;
+    background-image: url('../img/sns.png'); 
+    background-size: cover;
+    border-radius: 15px;
 }

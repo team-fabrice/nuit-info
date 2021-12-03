@@ -1,3 +1,8 @@
 <%- include('head.ejs', { title: 'Accueil' }) %>
-<p><%- message %></p>
+<div aria-hidden="true" class="hero"></div>
+<h1>Sauveteurs du dunkerquois</h1>
+<form action="/search">
+    <input type="search">
+    <input type="submit" value="Rechercher" class="search">
+</form>
 <%- include('footer.ejs') %>
