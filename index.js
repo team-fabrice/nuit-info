@@ -4,7 +4,7 @@ const views = require('koa-views')
 const staticFiles = require('koa-static')
 const postgres = require('postgres')
 
-let urlDb = 'postgres://nuit_info:teamfabrice@edgar.bzh/nuit_info';
+const dbUrl = require('./configdb').dbUrl;
 const sql = postgres(urlDb, {});
 
 const app = new Koa()
@@ -37,6 +37,14 @@ router
         'use strict';
         const article = await sql` select * from article_rev order by random() limit 1`;
         ctx.body = article;
+    })
+    .get('/Article', async function(ctx, next){
+        'use strict';
+        let title = ctx.query.title || -1;
+        let contents = ctx.query.contents || -1;
+        let first_name = ctx.name || -1;
+        let last_name = ctx.lastname || -1;
+        const article = await sql`select * from article_rev where title = ${title} or contents = ${contents} or meta_person_first_name = ${first_name} or  `
     })
 
 app

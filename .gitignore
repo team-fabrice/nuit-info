@@ -105,3 +105,6 @@ dist
 
 public/*
 !public/.gitkeep
+
+
+configdb.js
