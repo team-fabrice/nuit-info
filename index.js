@@ -96,6 +96,7 @@ router.get('/rev/:uuid', async (ctx) => {
     await ctx.render('article.ejs', art)
 })
 
+
 app
     .use(router.routes())
     .use(router.allowedMethods)

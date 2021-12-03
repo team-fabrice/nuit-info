@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     </head>
-    <body>
+    <body class="dark_mode">
         <aside>
             <h1>Sauveteurs du dunkerquois</h1>
             <form action="/search">
@@ -21,6 +21,12 @@
                         <li><a href="/historique">Historique</a></li>
                         <li><a href="/a-propos">À propos</a></li>
                         <li><a href="/admin/login">Connexion</a></li>
+                        <li><!-- Toggle Switch -->
+                            <div class="switch">
+                              <input type="checkbox" id="switch" />
+                              Dark Mode
+                              </label>
+                            </div></li>
                     </ul>
                 </nav>
             </footer>
