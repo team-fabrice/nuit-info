@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Playfair+Display:ital@0;1&display=swap');
+
 $gray: #dadada;
 $white: white;
 $black: black;
@@ -9,10 +11,11 @@ $accent: rgb(80, 100, 200);
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 
 header {
+    font-family: 'Montserrat', sans-serif;
     border-bottom: 2px solid $gray;
     padding: 1rem;
     justify-content: space-between;
@@ -43,4 +46,9 @@ input[type="submit"] {
     background: $accent;
     border: none;
     color: $white;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }
