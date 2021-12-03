@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Playfair+Display:ital@0;1&display=swap');
+
 $gray: #dadada;
 $white: white;
 $black: black;
@@ -10,79 +12,12 @@ $accent: rgb(80, 100, 200);
 }
 
 body {
-    font-family: sans-serif;
-}
-
-header {
-    padding: 1rem;
-    align-items: flex-start;
+    font-family: 'Playfair Display', serif;
     display: flex;
-    position: fixed;
-    top:0;
-
-    a,
-    a:visited {
-        text-decoration: none;
-        color: $black;
-    }
-
-    nav {
-        background: url("../images/Gouvernail.png") no-repeat;
-        background-size: contain;
-        width: 420px;
-        height: 420px;
-        gap: 1rem;
-        font-size: 1.8em;
-        top: -35%;
-        left: 37%;
-        position: fixed;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition: 0.2s ease-in;
-
-        a {
-            display: inline-flex;
-            background-color: $orange;
-            text-decoration: none;
-            border-radius: 4px;
-            &:visited {
-                color: $white;
-            }
-        }
-
-        &:hover {
-            top: -20%;
-        }
-    }
-
-    .menu {
-        right:0;
-        z-index:1;
-        position:fixed;
-        height:100%;
-        width:25%;
-        background-image:none;
-        background-color: $gray;
-        box-shadow: -1px -1px 5px 5px rgba(0, 0, 0, 0.5);
-        transition: 0.2s ease-in;
-
-        &:hover{
-            background: url("../images/menu.png") no-repeat;
-            background-size: contain;
-            width: 40px;
-            height:40px;
-
-            z-index: 1;
-            position: fixed;
-        }
-
-    }
 }
 
 main {
+<<<<<<< HEAD
     margin: 2rem auto;
     width: clamp(600px, 70ch, 95vw);
 
@@ -110,10 +45,23 @@ main {
         background-color: green;
     }
 
+=======
+    margin: 7rem auto;
+    width: clamp(600px, 90ch, 95vw);
+}
+
+form {
+    display: flex;
+    margin: 1rem;
+>>>>>>> e5fff3ae64bfdb0faa06214846ad279293aa8e94
 }
 
 input {
     padding: 0.5rem;
+}
+
+input[type="search"] {
+    flex: 1;
 }
 
 input[type="submit"] {
@@ -164,8 +112,30 @@ h1 {
     padding-bottom: 100px;
 }
 
-p {
-    text-align: justify;
-    margin: 20px;
-    color: rgb(170, 57, 57);
+aside {
+    font-family: 'Montserrat', sans-serif;
+    border-right: 2px solid $gray;
+    padding: 1rem 0;
+
+    ul {
+        list-style: none;
+        li {
+            transition: background 0.1s ease-in;
+            &:hover {
+                background: $gray;
+            }
+        }
+        a, a:visited {
+            padding: 1rem;
+            display: block;
+            width: 100%;
+            color: $black;
+            text-decoration: none;
+        }
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }

@@ -32,6 +32,7 @@
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "koa-views": "^8.0.0",
+    "marked": "^4.0.6",
     "postgres": "^1.0.2"
   },
   "devDependencies": {
