@@ -76,6 +76,15 @@ router.get('/apropos', async (ctx) => {
     await ctx.render('apropos.ejs', { message: 'test !' })
 })
 
+
+router.get('/article/new', async (ctx) => {
+    await ctx.render('editor.ejs', {
+        title: '',
+        contents: '',
+        isNew: true,
+    })
+})
+
 router.get('/article/:uuid', async (ctx) => {
     const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
     art.contents = await parseMd(sql, art.contents)
@@ -84,6 +93,7 @@ router.get('/article/:uuid', async (ctx) => {
 
 router.get('/article/:uuid/edit', async (ctx) => {
     const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
+    art.isNew = false
     await ctx.render('editor.ejs', art)
 })
 

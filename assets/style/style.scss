@@ -27,24 +27,27 @@ form {
 }
 
 .editor {
+    display: flex;
+    flex: 1;
+    form {
+        margin: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        * { flex: 1 }
+    }
 
     textarea {
-        float:left;
-        width:45%;
-        resize: vertical;
-        padding:15px;
-        border-radius:4px;
+        flex: 10;
+        padding: 1rem;
+        overflow-y: auto;
         box-sizing: border-box; /* Make sure that padding and width stays in place */
-        margin-top: 6px; /* Add a top margin */
-        margin-bottom: 16px; /* Bottom margin */
         border:0;
         box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-        height:800px;
       }
     .editor_preview {
-        float: left;
-        width:45%;
-        height:800px;
+        flex: 1;
         background-color: green;
     }
 }

@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/style.css">
 
-<head>
-    <meta charset="utf-8">
-    <title>Editeur page</title>
-    <link rel="stylesheet" href="/style.css">
-
-</head>
-
-<body>
-    <header>
-        <nav>
-            <a href="/">Accueil</a>
-            <a href="/historique">Historique</a>
-            <a href="/apropos">À propos</a>
-            <a href="/resultatsderecherche">Lien</a>
-            <a href="/editor">Editeur</a>
-        </nav>
-        <form action="/search">
-            <input type="search">
-            <input type="submit" value="Rechercher" class="search">
-        </form>
-    </header>
-    <div class="editor">
-        <form action="/editor" method="post">
-            <textarea id="contents" name="contents" placeholder="add info in markdown here"></textarea>
-            <input type="submit" value="Contents">
-        </form>
-        <div class="editor_preview">
-            <p>Test</p><br><br>
+    </head>
+    <body>
+        <aside>
+            <h1>Sauveteurs du dunkerquois</h1>
+            <form action="/search">
+                <input type="search">
+                <input type="submit" value="Rechercher" class="search">
+            </form>
+            <footer>
+                <nav>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/historique">Historique</a></li>
+                        <li><a href="/a-propos">À propos</a></li>
+                        <li><a href="/admin/login">Connexion</a></li>
+                    </ul>
+                </nav>
+            </footer>
+        </aside>
+        <div class="editor">
+            <% if (isNew) { %>
+                <form action="/admin/articles/new" method="post">
+            <% } else { %>
+                <form action="/admin/articles/<%= article_id %>/edit" method="post">
+            <% } %>
+                <input placeholder="Titre" type="text" value="<%= title %>">
+                <textarea id="contents" name="contents" placeholder="add info in markdown here"><%= contents %></textarea>
+                <% if (isNew) { %>
+                    <input type="submit" value="Proposer la création">
+                <% } else { %>
+                    <input type="submit" value="Proposer la modification">
+                <% } %>
+            </form>
+            <div class="editor_preview">
+                <p>Test</p><br><br>
+            </div>
         </div>
-    </div>
-
-    <footer>
-    </footer>
 </body>
-
 </html>
