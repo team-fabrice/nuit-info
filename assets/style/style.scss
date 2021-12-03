@@ -1,6 +1,7 @@
 $gray: #dadada;
 $white: white;
 $black: black;
+$orange: rgb(194, 143, 47);
 $accent: rgb(80, 100, 200);
 
 * {
@@ -13,20 +14,71 @@ body {
 }
 
 header {
-    border-bottom: 2px solid $gray;
     padding: 1rem;
-    justify-content: space-between;
+    align-items: flex-start;
     display: flex;
+    position: fixed;
+    top:0;
 
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    a, a:visited {
+    a,
+    a:visited {
         text-decoration: none;
         color: $black;
+    }
+
+    nav {
+        background: url("../images/Gouvernail.png") no-repeat;
+        background-size: contain;
+        width: 420px;
+        height: 420px;
+        gap: 1rem;
+        font-size: 1.8em;
+        top: -35%;
+        left: 37%;
+        position: fixed;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: 0.2s ease-in;
+
+        a {
+            display: inline-flex;
+            background-color: $orange;
+            text-decoration: none;
+            border-radius: 4px;
+            &:visited {
+                color: $white;
+            }
+        }
+
+        &:hover {
+            top: -20%;
+        }
+    }
+
+    .menu {
+        right:0;
+        z-index:1;
+        position:fixed;
+        height:100%;
+        width:25%;
+        background-image:none;
+        background-color: $gray;
+        box-shadow: -1px -1px 5px 5px rgba(0, 0, 0, 0.5);
+        transition: 0.2s ease-in;
+
+        &:hover{
+            background: url("../images/menu.png") no-repeat;
+            background-size: contain;
+            width: 40px;
+            height:40px;
+
+            z-index: 1;
+            position: fixed;
+        }
+
     }
 }
 
