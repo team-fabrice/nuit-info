@@ -2,23 +2,22 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>
-            <%= title %>
-        </title>
+        <title><%= title %></title>
         <link rel="stylesheet" href="/style.css">
-    </head>
 
+    </head>
     <body>
         <header>
+            <nav>
+                <a href="/">Accueil</a>
+                <a href="/historique">Historique</a>
+                <a href="/apropos">À propos</a>
+                <a href="/resultatsderecherche">Lien</a>
+                <a href="/editor">Editeur</a>
+            </nav>
             <form action="/search">
                 <input type="search">
                 <input type="submit" value="Rechercher" class="search">
             </form>
-            <nav>
-                <a href="/">Accueil</a>
-                <a href="/historique">Historique</a>
-                <a href="/a-propos">À propos</a>
-            </nav>
-            <div class="menu"></div>
         </header>
-        <main>
+        <% if (!skipMain) { %><main><% } %>

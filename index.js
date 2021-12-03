@@ -50,6 +50,10 @@ router.get('/apropos', async (ctx) => {
     await ctx.render('apropos.ejs', { message: 'test !' })
 })
 
+router.get('/editor', async (ctx) => {
+    await ctx.render('editor.ejs', { message: 'test !' })
+})
+
 app
     .use(router.routes())
     .use(router.allowedMethods)

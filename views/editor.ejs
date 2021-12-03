@@ -1,0 +1,10 @@
+<%- include('head.ejs', { title: 'Editeur de page', skipMain: true }) %>
+<div class="editor">
+    <form action="/editor" method="post">
+        <textarea id="contents" name="contents" placeholder="add info in markdown here" ></textarea>
+        <input type="submit" value="Contents">
+    </form>
+    <div class="editor_preview"><p>Test</p><br><br></div>    
+</div>
+
+<%- include('footer.ejs', {skipMainEnd: true}) %>
