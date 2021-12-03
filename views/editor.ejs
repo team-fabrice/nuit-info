@@ -30,7 +30,7 @@
             <% } else { %>
                 <form action="/admin/articles/<%= article_id %>/edit" method="post">
             <% } %>
-                <input placeholder="Titre" type="text" value="<%= title %>">
+                <input name="title" id="title" placeholder="Titre" type="text" value="<%= title %>">
                 <textarea id="contents" name="contents" placeholder="add info in markdown here"><%= contents %></textarea>
                 <% if (isNew) { %>
                     <input type="submit" value="Proposer la création">
