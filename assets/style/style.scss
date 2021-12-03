@@ -16,7 +16,7 @@ header, footer {
     border-bottom: 2px solid $gray;
     padding: 1rem;
     justify-content: space-between;
-    display: flex;
+    display: inline;
 
     nav {
         display: flex;
@@ -28,6 +28,7 @@ header, footer {
         text-decoration: none;
         color: $black;
     }
+
 }
 
 main {

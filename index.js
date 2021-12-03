@@ -35,6 +35,22 @@ router.get('/apropos', async (ctx) => {
     await ctx.render('apropos.ejs', { message: 'test !' })
 })
 
+router.get('/form', async (ctx) => {
+    await ctx.render('form.ejs', { message: 'test !' })
+})
+
+router.get('/presse', async (ctx) => {
+    await ctx.render('presse.ejs', { message: 'test !' })
+})
+
+router.get('/tableauhonneur', async (ctx) => {
+    await ctx.render('tableauhonneur.ejs', { message: 'test !' })
+})
+
+router.get('/nossauveteurs', async (ctx) => {
+    await ctx.render('nossauveteurs.ejs', { message: 'test !' })
+})
+
 app
     .use(router.routes())
     .use(router.allowedMethods)
