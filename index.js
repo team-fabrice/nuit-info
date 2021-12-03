@@ -31,6 +31,12 @@ router
         let updated_at = new Date();
         const [new_article] = await sql` insert into article_rev (revision_id, article_id, title, contents, created_at, updated_at) values (uuid_generate_v4 (), uuid_generate_v4 (), ${title}, ${contents}, ${created_at}, ${updated_at} )`;
         //new_article = {article_id:article_id, title:ctx.query.title, contents:ctx.query.content, created_at:created_at, updated_at:updated_at};
+        ctx.body = `Ajout effectué (title:${title}; contents:${contents})`;
+    })
+    .get('/randomArticle', async function(ctx, next){
+        'use strict';
+        const article = await sql` select * from article_rev order by random() limit 1`;
+        ctx.body = article;
     })
 
 app
