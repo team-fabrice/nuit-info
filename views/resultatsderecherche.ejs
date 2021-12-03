@@ -7,13 +7,12 @@
 </div>
 
 <div class="resultats">
-    <ul>
         <% resultats.forEach((resultat) => { %>
-            <li><%- resultat.title %></li>
-            <li><img src="<%- resultat.img %>" alt="Image de l'article"></img></li>
-            <li><%- resultat.description %></li>
+        <div>
+            <h2><a href="/article/<%= resultat.article_id %>"><%- resultat.title %></a></li>
+            <img src="<%- resultat.img %>" alt="Image de l'article"></img>
+            </div>
         <% }); %>
-    </ul>
 </div>
 <%- include('footer.ejs') %>
 
