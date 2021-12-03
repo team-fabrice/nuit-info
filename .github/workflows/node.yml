@@ -42,7 +42,7 @@ jobs:
     - name: Stop the server
       run: ssh staging 'sudo /bin/systemctl stop nuit_info_main'
     - name: Check out the source
-      run: scp -r . staging:/srv/nuit-info/
+      run: scp -r *.js src public views staging:/srv/nuit-info/
     - name: Install deps
       run: ssh staging 'cd /srv/nuit-info/; npm i'
     - name: Start the server
