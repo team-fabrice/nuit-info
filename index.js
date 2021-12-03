@@ -38,17 +38,15 @@ router
         const article = await sql` select * from article_rev order by random() limit 1`;
         ctx.body = article;
     })
-    .get('/HonorTable', async function(ctx, next){
+    .get('/honor-table', async function(ctx, next){
         'use strict';
-        const names = await sql`select meta_person_first_name, meta_person_last_name, meta_class from article_rev where meta_class = 'person'`;
-        ctx.body = '';
-        for(let i = 0; i < names.length; i++){
-            ctx.body += `${names[i].meta_person_first_name} ${names[i].meta_person_last_name}, `;
-        }
-        ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
+        const data = await sql`select * from article_rev where meta_class = 'person'`;
+        await ctx.render('all-articles.ejs', {
+            items: data,
+            title: 'Tableau d\'honneur'
+        })
     })
     .get('/SortieMer', async function(ctx, next){
-        'use strict';
         const sorties = await sql`select title, meta_event_date from article_rev where meta_event_date is not null `;
         let century = ctx.query.event_date || -1;
         ctx.body = "";
