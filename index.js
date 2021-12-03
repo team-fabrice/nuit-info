@@ -82,6 +82,11 @@ router.get('/article/:uuid', async (ctx) => {
     await ctx.render('article.ejs', art)
 })
 
+router.get('/article/:uuid/edit', async (ctx) => {
+    const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
+    await ctx.render('editor.ejs', art)
+})
+
 app
     .use(router.routes())
     .use(router.allowedMethods)

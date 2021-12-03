@@ -26,6 +26,29 @@ form {
     margin: 1rem;
 }
 
+.editor {
+
+    textarea {
+        float:left;
+        width:45%;
+        resize: vertical;
+        padding:15px;
+        border-radius:4px;
+        box-sizing: border-box; /* Make sure that padding and width stays in place */
+        margin-top: 6px; /* Add a top margin */
+        margin-bottom: 16px; /* Bottom margin */
+        border:0;
+        box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+        height:800px;
+      }
+    .editor_preview {
+        float: left;
+        width:45%;
+        height:800px;
+        background-color: green;
+    }
+}
+
 input {
     padding: 0.5rem;
 }
@@ -39,6 +62,8 @@ input[type="submit"] {
     border: none;
     color: $white;
 }
+
+
 
 .flex_container {
     display: flex;

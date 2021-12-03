@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Editeur page</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/historique">Historique</a>
+            <a href="/apropos">À propos</a>
+            <a href="/resultatsderecherche">Lien</a>
+            <a href="/editor">Editeur</a>
+        </nav>
+        <form action="/search">
+            <input type="search">
+            <input type="submit" value="Rechercher" class="search">
+        </form>
+    </header>
+    <div class="editor">
+        <form action="/editor" method="post">
+            <textarea id="contents" name="contents" placeholder="add info in markdown here"></textarea>
+            <input type="submit" value="Contents">
+        </form>
+        <div class="editor_preview">
+            <p>Test</p><br><br>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+</body>
+
+</html>
