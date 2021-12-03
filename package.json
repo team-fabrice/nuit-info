@@ -29,9 +29,11 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "koa": "^2.13.4",
+    "koa-postgresql-pool-connector": "^1.0.3",
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
-    "koa-views": "^8.0.0"
+    "koa-views": "^8.0.0",
+    "postgres": "^1.0.2"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
