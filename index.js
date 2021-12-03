@@ -3,9 +3,9 @@ const Router = require('koa-router')
 const views = require('koa-views')
 const staticFiles = require('koa-static')
 const postgres = require('postgres')
-const wikiLink = require('./src/markdown')
+const parseMd = require('./src/markdown')
 
-let urlDb = 'postgres://nuit_info:teamfabrice@edgar.bzh/nuit_info';
+const urlDb = 'postgres://nuit_info:teamfabrice42@edgar.bzh/nuit_info';
 const sql = postgres(urlDb, {});
 
 const app = new Koa()
@@ -16,7 +16,6 @@ const render = views(__dirname + '/views', {
     }
 })
 
-marked.use({ extensions: [wikiLink(sql)] })
 app.use(render)
 app.use(staticFiles('public'))
 
@@ -49,12 +48,9 @@ router.get('/apropos', async (ctx) => {
 })
 
 router.get('/article/:uuid', async (ctx) => {
-    await ctx.render('article.ejs', {
-        title: 'Jean Dupont',
-        content:
-`Jean Dupont est né en 1994. Il a sauvé **beaucoup** de gens.
-`,
-    })
+    const [art] = await sql`SELECT * FROM article_rev WHERE article_id = ${ctx.params.uuid} AND modification_author is NULL`
+    art.contents = await parseMd(sql, art.contents)
+    await ctx.render('article.ejs', art)
 })
 
 app

@@ -1,26 +1,21 @@
 const marked = require('marked')
 
 const rule = /\[\[((.*?)(\|(.*?))?)\]\]/
-
-const wikiLink = (sql) => {
-    name: 'wikilink',
-    level: 'inline',
-    start(src) { return src.match(/\[\[/)?.index },
-    tokenizer(src, tokens) {
-        const match = src.match(rule)
-        if (match) {
-            return {
-                type: 'wikilink',
-                raw: this.lexer.inlineTokens(match[0].trim()),
-                link: this.lexer.inlineTokens(match[2].trim()),
-                title: this.lexer.inlineTokens(match[4].trim()),
-            }
-        }
-    },
-    renderer(token) {
-        const uuid = sql`SELECT article_id FROM article_rev WHERE title LIKE '%${token.link || token.title}%' AND modification_author = NULL`
-        return `<a href="/article/${uuid}">${this.parser.parseInline(token.title)}</a>`
+const parseRec = async (sql, md) => {
+    if (md === undefined) return ''
+    const match = md.match(rule)
+    if (match) {
+        const link = match[2]
+        const title = match[4]
+        const end = match.index + match[0].length
+        const uuid = await sql`SELECT article_id FROM article_rev WHERE title = ${'%' + (link || title) + '%'} AND modification_author = NULL`
+        const fullLink = `/article/${uuid}`
+        const mdLink = `[${title || link}](${fullLink})`
+        const next = await parseRec(md.substr(end, md.length))
+        return md.substr(0, match.index) + mdLink + next
+    } else {
+        return md
     }
 }
 
-module.exports = wikiLink
+module.exports = async (sql, md) => marked.parse(await parseRec(sql, md))

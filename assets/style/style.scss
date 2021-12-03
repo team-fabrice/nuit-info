@@ -13,11 +13,12 @@ $accent: rgb(80, 100, 200);
 
 body {
     font-family: 'Playfair Display', serif;
+    display: flex;
 }
 
 main {
     margin: 7rem auto;
-    width: clamp(600px, 70ch, 95vw);
+    width: clamp(600px, 90ch, 95vw);
 }
 
 form {
@@ -80,10 +81,7 @@ h1 {
 }
 
 aside {
-    position: fixed;
     font-family: 'Montserrat', sans-serif;
-    top: 0;
-    bottom: 0;
     border-right: 2px solid $gray;
     padding: 1rem 0;
 
