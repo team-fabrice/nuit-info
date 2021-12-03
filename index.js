@@ -39,22 +39,26 @@ router
         const article = await sql` select * from article_rev order by random() limit 1`;
         ctx.body = article;
     })
-    // .get('/Article', async function(ctx, next){
-    //     'use strict';
-    //     let title = ctx.query.title || -1;
-    //     let contents = ctx.query.contents || -1;
-    //     let first_name = ctx.name || -1;
-    //     let last_name = ctx.lastname || -1;
-    //     const article = await sql`select * from article_rev where title = ${title} or contents = ${contents} or meta_person_first_name = ${first_name} or  `
-    // })
-    .get('/HonorTable', async function(ctx, next){
+    .get('/Article', async function(ctx, next){
+        'use strict';
+        let first_name = ctx.query.first_name ;
+        let last_name = ctx.query.last_name;
+        // where meta_person_first_name like ${first_name} and meta_person_last_name like ${last_name}
+        const articles = await sql`select * from article_rev  where meta_person_first_name like ${first_name} and meta_person_last_name like ${last_name}`;
+        console.log(articles);
+        ctx.body = `<h1>${articles[0].meta_person_first_name} ${articles[0].meta_person_last_name}</h1>`;
+        ctx.body += `<h2>${articles[0].title}</h2>`;
+        ctx.body += `<p>${articles[0].contents}</p>`;
+    })
+    .get('/tableauhonneur', async function(ctx, next){
         'use strict';
         const names = await sql`select meta_person_first_name, meta_person_last_name, meta_class from article_rev where meta_class = 'person'`;
-        ctx.body = '';
+        let res = ["", ""];
         for(let i = 0; i < names.length; i++){
-            ctx.body += `${names[i].meta_person_first_name} ${names[i].meta_person_last_name}, `;
+            res[i] = [`Article?first_name=${names[i].meta_person_first_name}&last_name=${names[i].meta_person_last_name}`,names[i].meta_person_first_name,names[i].meta_person_last_name];
         }
-        ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
+        console.log(res);
+        await ctx.render('tableauhonneur.ejs', { resultats: res })
     })
     .get('/SortieMer', async function(ctx, next){
         'use strict';
@@ -69,6 +73,47 @@ router
         ctx.body = ctx.body.substring(0,ctx.body.length - 2 );
     })
 
+
+
+let article = {
+    title : 'Ceci est un titre',
+    img : '/img/test.png',
+    description : 'Ceci est la description de l\'article'
+}
+
+  
+
+router.get('/resultatsderecherche', async (ctx) => {
+    await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: [article] })
+})
+
+router.get('/apropos', async (ctx) => {
+    await ctx.render('apropos.ejs', { message: 'test !' })
+})
+
+router.get('/form', async (ctx) => {
+    await ctx.render('form.ejs', { message: 'test !' })
+})
+
+router.get('/presse', async (ctx) => {
+    await ctx.render('presse.ejs', { message: 'test !' })
+})
+
+router.get('/tableauhonneur', async (ctx) => {
+    await ctx.render('tableauhonneur.ejs', { message: 'test !' })
+})
+
+router.get('/nossauveteurs', async (ctx) => {
+    await ctx.render('nossauveteurs.ejs', { message: 'test !' })
+})
+
+router.get('/lesacteurs', async (ctx) => {
+    await ctx.render('lesacteurs.ejs', { message: 'test !' })
+})
+
+router.get('/pilotage', async (ctx) => {
+    await ctx.render('pilotage.ejs', { message: 'test !' })
+})
 
 app
     .use(router.routes())

@@ -12,11 +12,11 @@ body {
     font-family: sans-serif;
 }
 
-header {
+header, footer {
     border-bottom: 2px solid $gray;
     padding: 1rem;
     justify-content: space-between;
-    display: flex;
+    display: inline;
 
     nav {
         display: flex;
@@ -28,6 +28,7 @@ header {
         text-decoration: none;
         color: $black;
     }
+
 }
 
 main {
@@ -43,4 +44,50 @@ input[type="submit"] {
     background: $accent;
     border: none;
     color: $white;
+}
+
+.flex_container {
+    display: flex;
+}
+
+.flex_container > div {
+    flex : 1;
+    text-align: center;
+    margin : 10px;
+    padding: 20px;
+    background-color: rgb(215, 217, 223);
+}
+
+.apropos {
+    display: flex;
+}
+
+.blocks {
+    display: flex;
+}
+
+.text {
+    margin-left: -200px;
+    width: 1200px;
+}
+
+h1 {
+    text-align: center;
+    margin: 25px;
+}
+
+.imgapropos {
+    float: right;
+}
+
+.imgapropos > img {
+    width: 150px;
+    margin-top: 100px;
+    padding-bottom: 100px;
+}
+
+p {
+    text-align: justify;
+    margin: 20px;
+    color: rgb(170, 57, 57);
 }
