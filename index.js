@@ -63,7 +63,7 @@ router
 
 router.get('/recherche', async (ctx) => {
     const query = ctx.query.q
-    const out = JSON.parse(execSync('python3 main.py', { input: JSON.stringify({ title: query }) })
+    const out = JSON.parse(execSync('python3 main.py', { input: JSON.stringify({ title: query }) }))
     await ctx.render('resultatsderecherche.ejs', { filtres: ':filtres', resultats: out })
 })
 
