@@ -172,18 +172,26 @@ article {
     aside {
         border-right: none;
         padding: 0;
+        margin:0;
+        min-height: 0;
         a,
         a:visited {
             font-size: 0.8em;
         }
     }
 
-    h1 {
+    h1 { 
         font-size: 1.2em;
     }
 
     main {
-        padding: 1em;
+        margin: 0;
+        padding: 1rem;
         width: 100%;
+    }
+
+    .hero {
+        width:95%;
+        min-height: 20vh;
     }
 }
